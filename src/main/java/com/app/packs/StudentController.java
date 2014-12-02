@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,7 +32,21 @@ public class StudentController {
        }
         
         
-        
+   @RequestMapping(value= "/student/add", method = RequestMethod.POST)
+	public String addStudent(@ModelAttribute("person") Student st){
+		
+		if(st.getId() == 0){
+			//new person, add it
+			this.studentService.addStudent(st);
+		}else{
+			//existing person, call update
+			this.studentService.updateStudent(st);
+		}
+		
+		return "redirect:/student";
+		
+	}
+	     
         
         
         

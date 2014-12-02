@@ -17,7 +17,7 @@
 	Add a Person
 </h1>
 
-<c:url var="addAction" value="/person/add" ></c:url>
+<c:url var="addAction" value="/student/add" ></c:url>
 
 <form:form action="${addAction}" commandName="student">
 <table>
