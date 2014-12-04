@@ -4,7 +4,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Person Page</title>
+	<title>Student Page</title>
 	<style type="text/css">
 		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>
-	Add a Person
+	Add a Student
 </h1>
 
 <c:url var="addAction" value="/student/add" ></c:url>
@@ -80,13 +80,13 @@
 </table>	
 </form:form>
 <br>
-<h3>Persons List</h3>
+<h3>Student List</h3>
 <c:if test="${!empty studentlist}">
 	<table class="tg">
 	<tr>
-		<th width="80">Person ID</th>
-		<th width="120">Person Name</th>
-		<th width="120">Person Country</th>
+		<th width="80">Student ID</th>
+		<th width="120">Student Name</th>
+		<th width="120">Student Country</th>
 		<th width="60">Edit</th>
 		<th width="60">Delete</th>
 	</tr>

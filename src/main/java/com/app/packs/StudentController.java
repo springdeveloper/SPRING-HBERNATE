@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class StudentController {
  private StudentService studentService;
- @Autowired(required=true)
+        @Autowired(required=true)
 	@Qualifier(value="studentService")
 	public void setPersonService(StudentService st){
 		this.studentService = st;
