@@ -35,7 +35,6 @@ public class RestController {
 	}
 	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	
-	//Map to store employees, ideally we should use database
 	
 	@RequestMapping(value = RestUrl.DUMMY_EMP, method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getStudent() {
