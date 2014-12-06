@@ -12,7 +12,7 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
+<context:annotation-config />
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -53,12 +53,7 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-	<beans:bean id="studentDAO" class="com.app.packs.dao.StudentDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="studentService" class="com.app.packs.service.StudentServiceImpl">
-		<beans:property name="studentDAO" ref="studentDAO"></beans:property>
-	</beans:bean>
+	
 	
 	<context:component-scan base-package="com.app.packs" />
 	

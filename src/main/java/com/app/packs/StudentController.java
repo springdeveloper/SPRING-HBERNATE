@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class StudentController {
+    
+    
+    
+   
+ @Autowired   
  private StudentService studentService;
-        @Autowired(required=true)
-	@Qualifier(value="studentService")
-	public void setPersonService(StudentService st){
-		this.studentService = st;
-	}
+        
+	
         @RequestMapping(value = "/student" ,method =RequestMethod.GET)
        public String listStudent(Model model){
            model.addAttribute("student", new Student());

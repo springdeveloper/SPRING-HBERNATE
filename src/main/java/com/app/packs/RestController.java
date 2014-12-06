@@ -27,12 +27,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class RestController {
-    private StudentService studentService;
-        @Autowired(required=true)
-	@Qualifier(value="studentService")
-	public void setPersonService(StudentService st){
-		this.studentService = st;
-	}
+   
+ @Autowired
+ private StudentService studentService;
 	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	
 	

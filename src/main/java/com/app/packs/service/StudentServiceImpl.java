@@ -8,6 +8,7 @@ package com.app.packs.service;
 import com.app.packs.dao.StudentDAO;
 import com.app.packs.model.Student;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class StudentServiceImpl implements StudentService{
 
-    
+    @Autowired
    private StudentDAO studentDAO;
 
 	
@@ -52,13 +53,6 @@ public class StudentServiceImpl implements StudentService{
      @Transactional
     public void removeStudent(int id) {
         this.studentDAO.removeStudent(id);
-    }
-
-    /**
-     * @param studentDAO the studentDAO to set
-     */
-    public void setStudentDAO(StudentDAO studentDAO) {
-        this.studentDAO = studentDAO;
     }
 
    
