@@ -62,7 +62,12 @@ public class StudentController {
         model.addAttribute("student", this.studentService.getById(id));
          model.addAttribute("studentlist",this.studentService.listStudent());
         return "student";
-    }     
-        
+    }   
+@RequestMapping(value = "/temapltes" ,method =RequestMethod.GET)
+ public String angulat_templates(){
+     
+     
+     return "temaplates";
+ }       
         
 }
