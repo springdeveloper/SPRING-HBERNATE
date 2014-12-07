@@ -7,6 +7,7 @@ package com.app.packs;
 
 import com.app.packs.model.Student;
 import com.app.packs.service.StudentService;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,4 +43,18 @@ public class RestController {
            map.put("messages", list);
 		return map;
 	}
+        
+     @RequestMapping(value="/rest/student/create/{name}/{address}/{phoneno}",method = RequestMethod.POST,headers="Accept=application/json")
+	 public  List<Student> addTask(@PathVariable String name,@PathVariable String address,@PathVariable String phoneno) throws ParseException {	
+		Student st = new Student();
+		st.setName(name);
+                st.setAddress(name);
+                st.setPhoneno(phoneno);
+                studentService.addStudent(st);
+		return studentService.listStudent();
+		 
+	 }	 	    
+        
+        
+        
 }
