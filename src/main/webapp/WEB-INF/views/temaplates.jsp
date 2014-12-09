@@ -20,15 +20,15 @@
     <table class="add-task">
 					<tr>
 						<td> Name:</td>
-						<td><input type="text" ng-model="name"/></td>
+						<td><input type="text" ng-model="person.name"/></td>
 					</tr>
 					<tr>
 						<td>Address:</td>
-						<td><input type="text" ng-model="address"/></td>
+						<td><input type="text" ng-model="person.address"/></td>
 					</tr>
                     <tr>
 						<td> Phone:</td>
-						<td><input type="text" ng-model="phoneno"/></td>
+						<td><input type="text" ng-model="person.phoneno"/></td>
 					</tr>
 					
 					
@@ -40,28 +40,27 @@
   
 <script>
 function customersController($scope,$http) {
-    var site = "http://localhost:8086/Hibenate_springmvc";
+    var site = "http://localhost:8086/SPRING-HBERNATE";
     var page = "/rest/student/dummy";
     $http.get(site + page)
     .success(function(response) {$scope.names = response.messages;});
-}
+
 
 
 
 $scope.addTask = function addTask() {
-		if($scope.taskName=="" || $scope.taskDesc=="" || $scope.taskPriority == "" || $scope.taskStatus == ""){
-			alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
-		}
-		else{
-		 $http.post(urlBase + '/rest/student/create/' +$scope.name+'/'+$scope.address+'/'+$scope.phoneno).
+		
+		 $http.post('http://localhost:8086/SPRING-HBERNATE/rest/student/create/',$scope.person).
 		  success(function(data) {
-			 alert("Task added");
-			 $scope.tasks = data;	
-			 $scope.name="";
-			 $scope.address="";
-                         $scope.phoneno="";
-						 
+			 alert("Task added"+data);
+					 
 		    });
+                    
+                 $http.get(site + page)
+                .success(function(response) {$scope.names = response.messages;});
+     
+                    
+                    
 		}
 	};
 

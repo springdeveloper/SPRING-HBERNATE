@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,17 +45,14 @@ public class RestController {
 		return map;
 	}
         
-     @RequestMapping(value="/rest/student/create/{name}/{address}/{phoneno}",method = RequestMethod.POST,headers="Accept=application/json")
-	 public  List<Student> addTask(@PathVariable String name,@PathVariable String address,@PathVariable String phoneno) throws ParseException {	
-		Student st = new Student();
-		st.setName(name);
-                st.setAddress(name);
-                st.setPhoneno(phoneno);
-                studentService.addStudent(st);
-		return studentService.listStudent();
-		 
-	 }	 	    
+     	    
         
+      @RequestMapping(value="/rest/student/create/", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMessage addPerson(@RequestBody Student person) {
         
+        studentService.addStudent(person);
+        return new ResponseMessage(ResponseMessage.Type.success, "personAdded");
+    }   
         
 }
