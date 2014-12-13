@@ -33,7 +33,7 @@ public class StudentDAOImpl implements StudentDAO{
     @Override
     public void addStudent(Student st) {
         Session session=this.sessionFactory.getCurrentSession();
-        session.persist(st);
+        session.saveOrUpdate(st);
         logger.info("Add Student Successfully "+st);
         
     }
@@ -58,7 +58,7 @@ public class StudentDAOImpl implements StudentDAO{
     @Override
     public Student getById(int id) {
        Session session=this.sessionFactory.getCurrentSession();
-       Student st=(Student)session.load(Student.class, new Integer (id));
+       Student st=(Student)session.get(Student.class, new Integer (id));
        logger.info("Get by id"+st);
        return st;
        

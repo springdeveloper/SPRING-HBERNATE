@@ -54,5 +54,29 @@ public class RestController {
         studentService.addStudent(person);
         return new ResponseMessage(ResponseMessage.Type.success, "personAdded");
     }   
-        
+         @RequestMapping(value = "/rest/student/{id}", method = RequestMethod.GET)
+         
+	public @ResponseBody Map<String, Object> getStudent(@PathVariable("id") int id) {
+            System.out.println(id);
+            Map<String, Object> map = new HashMap<String, Object>();
+		Student person = new Student();
+		try {
+			person = studentService.getById(id);
+                        System.out.println(person.getName());
+                     map.put("kk", person);
+                   	 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map;
+	}
+         @RequestMapping(value = "/rest/student/{id}", method = RequestMethod.DELETE)
+         @ResponseBody
+         public ResponseMessage deleteStudent(@PathVariable int id) {
+        	 studentService.removeStudent(id);
+             return new ResponseMessage(ResponseMessage.Type.success, "StudentDeleted");
+         }       
+         
+         
+      
 }

@@ -5,6 +5,7 @@
  */
 package com.app.packs.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Student")
-public class Student {
+public class Student implements Serializable{
     @Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,7 +28,9 @@ public class Student {
 	private String name;
         private String address;
         private String phoneno;
-
+public Student(){
+    
+}
     /**
      * @return the id
      */
